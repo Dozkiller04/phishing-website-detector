@@ -1,15 +1,3 @@
-Absolutely, Soham! Here's your **fully corrected and complete `README.md`** for the [Phishing Website Detector project](https://github.com/Dozkiller04/phishing-website-detector), based on:
-
-* ✅ Your **latest GitHub repo**
-* ✅ **8 uploaded screenshots**
-* ✅ ✅ Working GUI and ML code
-* ✅ 🎥 Your demo video link
-
----
-
-## ✅ Final & Complete `README.md` (Copy-Paste Ready)
-
-````markdown
 # 🛡️ Phishing Website Detector
 
 A cybersecurity project to detect phishing websites using two approaches:
