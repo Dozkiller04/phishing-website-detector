@@ -1,52 +1,83 @@
+import re
+import urllib.parse
 import tkinter as tk
 from tkinter import messagebox
-import pickle
 
-# Load model and vectorizer
-with open("model.pkl", "rb") as f:
-    model = pickle.load(f)
-with open("vectorizer.pkl", "rb") as f:
-    vectorizer = pickle.load(f)
+# List of known legitimate domains
+SAFE_DOMAINS = [
+    "google.com", "github.com", "wikipedia.org", "openai.com",
+    "example.com", "microsoft.com", "amazon.com", "yahoo.com"
+]
 
-# Detect phishing
-def detect_url():
+# List of suspicious TLDs commonly used in phishing
+SUSPICIOUS_TLDS = ['.tk', '.ml', '.ga', '.cf', '.gq']
+
+# Keywords often found in phishing URLs
+PHISHING_KEYWORDS = ['login', 'verify', 'secure', 'banking', 'account', 'update', 'signin']
+
+# Characters that are unusual or used for redirection/obfuscation
+SUSPICIOUS_CHARS = ['@', '//', '-', '=']
+
+def is_ip_address(domain):
+    return bool(re.match(r'^\d{1,3}(\.\d{1,3}){3}$', domain))
+
+def extract_domain(url):
+    try:
+        parsed_url = urllib.parse.urlparse(url)
+        hostname = parsed_url.netloc or parsed_url.path
+        return hostname.lower().replace("www.", "")
+    except Exception:
+        return ""
+
+def is_phishing_url(url):
+    domain = extract_domain(url)
+
+    if any(domain.endswith(safe) for safe in SAFE_DOMAINS):
+        return False
+    if is_ip_address(domain):
+        return True
+    if any(domain.endswith(tld) for tld in SUSPICIOUS_TLDS):
+        return True
+    if any(keyword in url.lower() for keyword in PHISHING_KEYWORDS):
+        return True
+    if sum(char in url for char in SUSPICIOUS_CHARS) > 2:
+        return True
+    if len(url) > 80:
+        return True
+
+    return False
+
+# ============ GUI Part ============
+
+def check_url():
     url = url_entry.get()
-    if url == "" or url == "Enter URL here...":
-        messagebox.showwarning("Input Error", "Please enter a valid URL.")
+    if not url:
+        messagebox.showwarning("Input Error", "Please enter a URL.")
         return
 
-    url_vector = vectorizer.transform([url])
-    prediction = model.predict(url_vector)
-
-    if prediction[0] == 1:
-        result_label.config(text="⚠️ This URL is Phishing!", fg="red")
+    if is_phishing_url(url):
+        result_label.config(text="⚠️ Phishing or Suspicious URL!", fg="red")
     else:
-        result_label.config(text="✅ This URL is Safe.", fg="green")
+        result_label.config(text="✅ Safe and Legitimate URL", fg="green")
 
-# Clear placeholder on click
-def on_click(event):
-    if url_entry.get() == "Enter URL here...":
-        url_entry.delete(0, tk.END)
-        url_entry.config(fg="black")
+# Initialize GUI window
+root = tk.Tk()
+root.title("🔍 Phishing Website Detector")
+root.geometry("400x220")
+root.resizable(False, False)
 
-# GUI setup
-window = tk.Tk()
-window.title("Phishing URL Detector")
-window.geometry("400x200")
-window.resizable(False, False)
-
-title_label = tk.Label(window, text="Phishing URL Detector", font=("Arial", 16, "bold"))
+# Widgets
+title_label = tk.Label(root, text="Phishing URL Detection Tool", font=("Arial", 14, "bold"))
 title_label.pack(pady=10)
 
-url_entry = tk.Entry(window, width=50, fg="grey")
-url_entry.insert(0, "Enter URL here...")
-url_entry.bind("<FocusIn>", on_click)
-url_entry.pack(pady=5)
+url_entry = tk.Entry(root, width=45, font=("Arial", 11))
+url_entry.pack(pady=10)
+url_entry.insert(0, "https://")
 
-check_button = tk.Button(window, text="Check URL", command=detect_url)
+check_button = tk.Button(root, text="Check URL", command=check_url, font=("Arial", 11), bg="#007acc", fg="white")
 check_button.pack(pady=10)
 
-result_label = tk.Label(window, text="", font=("Arial", 14))
+result_label = tk.Label(root, text="", font=("Arial", 12))
 result_label.pack(pady=10)
 
-window.mainloop()
+root.mainloop()

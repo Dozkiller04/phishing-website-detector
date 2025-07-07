@@ -20,7 +20,6 @@ df["label"] = df["label"].map(label_mapping)
 df.dropna(subset=["label"], inplace=True)
 df["label"] = df["label"].astype(int)
 
-
 # Step 3: Feature extraction from URL using TF-IDF
 vectorizer = TfidfVectorizer()
 X = vectorizer.fit_transform(df["url"])
@@ -38,8 +37,9 @@ y_pred = model.predict(X_test)
 acc = accuracy_score(y_test, y_pred)
 print(f"✅ Model Accuracy: {acc:.2f}")
 
-# Step 7: Save the model and vectorizer
+# ✅ Step 7: Save trained model and vectorizer
 with open("model.pkl", "wb") as f:
     pickle.dump(model, f)
+
 with open("vectorizer.pkl", "wb") as f:
     pickle.dump(vectorizer, f)
