@@ -22,21 +22,21 @@ Includes both **GUI interface** and **terminal support** for practical testing.
 
 ## 📸 Screenshots
 
-| Rule-Based GUI – Phishing Detected | Rule-Based GUI – Legitimate URL |
-|-----------------------------------|---------------------------------|
-| ![](./Screenshots/01_rule_gui_detected.png) | ![](./Screenshots/02_rule_gui_legit.png) |
+| CLI – Input Prompt | CLI – Legitimate Output |
+|--------------------|-------------------------|
+| ![](https://github.com/Dozkiller04/phishing-website-detector/blob/main/Screenshots/01_CLI_input_prompt.png.png?raw=true) | ![](https://github.com/Dozkiller04/phishing-website-detector/blob/main/Screenshots/02_CLI_legitimate_output.png.png?raw=true) |
 
-| ML-Based GUI – Phishing Detected | ML-Based GUI – Legitimate URL |
-|----------------------------------|-------------------------------|
-| ![](./Screenshots/03_ml_gui_detected.png) | ![](./Screenshots/04_ml_gui_legit.png) |
+| CLI – Another Input | CLI – Phishing Output |
+|---------------------|------------------------|
+| ![](https://github.com/Dozkiller04/phishing-website-detector/blob/main/Screenshots/03_CLI_input_prompt.png.png?raw=true) | ![](https://github.com/Dozkiller04/phishing-website-detector/blob/main/Screenshots/04_CLI_phishing_output.png.png?raw=true) |
 
-| Terminal – Phishing Detected | Terminal – Legitimate URL |
-|-----------------------------|----------------------------|
-| ![](./Screenshots/05_terminal_rule_detected.png) | ![](./Screenshots/06_terminal_rule_legit.png) |
+| GUI – Input Prompt | GUI – Legitimate Output |
+|--------------------|--------------------------|
+| ![](https://github.com/Dozkiller04/phishing-website-detector/blob/main/Screenshots/05_GUI_input_prompt.png.png?raw=true) | ![](https://github.com/Dozkiller04/phishing-website-detector/blob/main/Screenshots/06_GUI_legitimate_output.png.png?raw=true) |
 
-| ML Training Notebook | Project Folder Structure |
-|----------------------|--------------------------|
-| ![](./Screenshots/07_ml_training_notebook.png) | ![](./Screenshots/08_repo_structure.png) |
+| GUI – Another Input | GUI – Phishing Output |
+|---------------------|------------------------|
+| ![](https://github.com/Dozkiller04/phishing-website-detector/blob/main/Screenshots/07_GUI_input_prompt.png.png?raw=true) | ![](https://github.com/Dozkiller04/phishing-website-detector/blob/main/Screenshots/08_GUI_phishing_output.png.png?raw=true) |
 
 ---
 
