@@ -6,7 +6,7 @@ A cybersecurity project to detect phishing websites using two approaches:
 
 Includes both **GUI interface** and **terminal support** for practical testing.
 
-> 🎓 Built as part of RISE Internship 2025 – For educational awareness only.
+> 🎓 Built as part of Internship 2025 – For educational awareness only.
 
 ---
 
