@@ -42,7 +42,7 @@ Includes both **GUI interface** and **terminal support** for practical testing.
 
 ## 🎥 Demo Video
 
-👉 [Click to Watch Full Demo](https://drive.google.com/file/d/1Y5Y1tnySStdVcGIskZtcQF9knRdFD-kb/view?usp=drive_link)
+👉 [Click to Watch Full Demo](https://drive.google.com/file/d/1Y1tnySStdVcGIskZtcQF9knRdFD-kb/view?usp=drive_link)
 
 > Covers rule-based detection, ML GUI detection, training model overview, and ethics.
 
